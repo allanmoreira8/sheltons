@@ -4,9 +4,9 @@
    ============================================================= */
 window.SHELTONS = {
   // WhatsApp no formato internacional, só números: 55 + DDD + número
-  whatsapp: "5500000000000",
+  whatsapp: "5531993938584",
   // Como o telefone aparece escrito na tela
-  telefoneVisivel: "(00) 00000-0000",
+  telefoneVisivel: "(31) 99393-8584",
   email: "contato@sheltons.com.br",
   instagram: "https://instagram.com/sheltons",
   cidade: "Sua cidade — UF",

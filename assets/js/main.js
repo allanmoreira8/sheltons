@@ -15,7 +15,7 @@
     // Enquanto o número do config.js não for trocado pelo número real,
     // os botões continuam levando para a seção de contato.
     if (numero.length < 12 || /^55?0+$/.test(numero)) return null;
-    return "https://wa.me/" + numero + (texto ? "?text=" + texto : "");
+    return "https://api.whatsapp.com/send?phone=" + numero + (texto ? "&text=" + texto : "");
   }
 
   function aplicarConfig() {
