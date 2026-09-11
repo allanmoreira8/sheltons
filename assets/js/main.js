@@ -52,6 +52,13 @@
     document.querySelectorAll('[data-campo="atendimento"]').forEach(function (el) {
       if (cfg.atendimento) el.textContent = cfg.atendimento;
     });
+
+    var nota = document.getElementById("formularioNota");
+    if (nota) {
+      nota.textContent = href
+        ? "O botão abre o WhatsApp com a sua mensagem já escrita. Você confere antes de enviar."
+        : "O botão abre seu aplicativo de e-mail com a mensagem já escrita. Você confere antes de enviar.";
+    }
   }
 
   /* ---------- 2. Menu mobile ---------- */
@@ -272,20 +279,21 @@
         return;
       }
 
-      var mensagem =
-        "Olá! Vim pelo site da Shelton's e gostaria de um orçamento.\n\n" +
+      var dadosPeca =
         "Nome: " + nome.value.trim() + "\n" +
         "Tipo de peça: " + form.tipo.value + "\n" +
         "Quantidade: " + (form.quantidade.value.trim() || "a definir") + "\n" +
         "Descrição: " + detalhes.value.trim();
 
-      var href = linkWhatsApp(mensagem);
+      var href = linkWhatsApp("Olá! Vim pelo site da Shelton's e gostaria de um orçamento.\n\n" + dadosPeca);
+      var mensagem = href ? null : dadosPeca;
+
       if (href) {
         window.open(href, "_blank", "noopener");
       } else if (cfg.email) {
         window.location.href =
           "mailto:" + cfg.email +
-          "?subject=" + encodeURIComponent("Pedido de orçamento pelo site") +
+          "?subject=" + encodeURIComponent("Pedido de orçamento pelo site — " + nome.value.trim()) +
           "&body=" + encodeURIComponent(mensagem);
       }
     });
